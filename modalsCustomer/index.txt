@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/style.css">
+<div id="mainFrame" class="mainFrame"></div>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/index.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/functions.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/lists.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/preloader.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/requestData.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/tasklist/tasklist.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/searchPanel/searchKeywords.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/searchPanel/searchPanel.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/searchPanel/searchTask.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/newTask/newTask.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/editTask/editTask.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/editTask/saveChanges.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/editTask/newsList/itemNews.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/editTask/newsList/newsList.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/editTask/newsList/editNewsForm.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsCustomer/js/tinymce/tinymce.min.js "></script>

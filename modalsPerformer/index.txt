@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/style.css?v=1.5">
+<div id="mainFrame"></div>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/taskList/taskList.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/index.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/searchPanel/searchPanel.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/functions.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/preloader.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/requestData.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/lists.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/searchPanel/searchKeywords.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/searchPanel/searchTask.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/js/tinymce/tinymce.min.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CS/TechnicalLibrary/js/owl.carousel.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formTask/formTask.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formTask/formTaskShowData.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formTask/formTaskSendData.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formNews/formDisplayNews.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formNews/formEditNews.js?v=1.1"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formNews/getNewsData.js "></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/formNews/formNewsSendData.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/newsTab/newsList/newsList.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/newsTab/searchPanelNews/searchPanelNews.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/newsTab/searchPanelNews/sendNotification.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/newsTab/searchPanelNews/previewNotification.js"></script>
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/modalsPerformer/newsTab/searchPanelNews/searchNews.js"></script>

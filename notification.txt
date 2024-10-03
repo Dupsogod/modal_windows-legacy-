@@ -1,0 +1,1513 @@
+<style>
+.modalNotification {
+    display: block;
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100vh;
+    /*height: 100%;*/ /* Full height */
+    /*overflow: auto;*/ /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10px auto;
+    padding: 0;
+    width: 90%;
+    height: 700px;
+    border: 2px solid rgb(212, 19, 103);
+    top: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top: 0px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:0px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.closeNotification {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeNotification:hover,
+.closeNotification:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    border-bottom: 0;
+}
+
+.modal-body {
+    padding: 2px 25px;
+    font-family: "Tahoma";
+    font-size: 12pt;
+}
+
+.modal-footer {
+    /*padding: 2px 16px;*/
+    display: flex;
+    justify-content:space-between;
+    font-size: 16px;
+    border-top: 0;
+}
+
+.listNewsFull::-webkit-scrollbar-track, .announcementList::-webkit-scrollbar-track, .listNewsFullPilot::-webkit-scrollbar-track, .listNewsFullLightning::-webkit-scrollbar-track, .listNewsFullOther::-webkit-scrollbar-track, .announcementListRelease::-webkit-scrollbar-track, .listNewsFullRelease::-webkit-scrollbar-track, .listNotificationInButton::-webkit-scrollbar-track{
+background-color: transparent;
+}
+
+.listNewsFull::-webkit-scrollbar, .announcementList::-webkit-scrollbar, .listNewsFullPilot::-webkit-scrollbar, .listNewsFullLightning::-webkit-scrollbar, .listNewsFullOther::-webkit-scrollbar, .announcementListRelease::-webkit-scrollbar, .listNewsFullRelease::-webkit-scrollbar, .listNotificationInButton::-webkit-scrollbar{
+width: 5px;
+}
+
+.listNewsFull::-webkit-scrollbar-thumb, .announcementList::-webkit-scrollbar-thumb, .listNotificationInButton::-webkit-scrollbar-thumb{
+background-color: rgb(212, 19, 103);
+}
+.listNewsFullRelease::-webkit-scrollbar-thumb, .announcementListRelease::-webkit-scrollbar-thumb{
+    background-color: #1794db;
+}
+.listNewsFullPilot::-webkit-scrollbar-thumb{
+background-color: #71c4c7;
+}
+.listNewsFullLightning::-webkit-scrollbar-thumb{
+background-color: #d33552;
+}
+.listNewsFullOther::-webkit-scrollbar-thumb{
+background-color: #c2c2c2;
+}
+.newsHeaderTime{
+    color: #2c2c2c;
+    font-size: 14px;
+}
+.newsHeaderSprint{
+    font-size: 26px;
+    color: rgb(212, 19, 103);
+}
+.newsHeaderRelease{
+    font-size: 26px;
+    color: #1794db;
+}
+.newsHeaderLightning{
+    font-size: 26px;
+    color: #d33552;
+}
+.announcementHeader{
+    background-color: #2C2C2C;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 10px;
+}
+.contentNewsWin{
+    display: flex;
+}
+.announcementList, .announcementListRelease{
+    position: relative;
+    height: 520px;
+    width: 40%;
+    padding: 10px;
+    margin-right: 10px;
+    overflow: auto;
+}
+.announcement{
+    color: rgb(212, 19, 103) !important; 
+    cursor: pointer;
+    display: flex;
+}
+.announcement:hover{
+    color: rgb(212, 19, 103) !important;
+}
+.announcementRelease{
+    color: #1794db !important; 
+    cursor: pointer;
+}
+.announcementRelease:hover{
+    color: #1794db !important;
+}
+.listNewsFull{
+    height: 520px;
+    width: 60%;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-left: 1px solid #2C2C2C;
+}
+.listNewsFullLightning{
+    max-height: 600px;
+    overflow-y: scroll;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.listNewsFullPilot{
+    max-height: 600px;
+    overflow-y: scroll;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.listNewsFullOther{
+    max-height: 600px;
+    overflow-y: scroll;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.listNewsFullRelease{
+    height: 520px;
+    width: 60%;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-left: 1px solid #2C2C2C;
+}
+
+.processHeader{
+    background-color: rgb(241, 241, 241);
+    border-left: 5px solid rgb(212, 19, 103);
+    border-bottom: 1px solid rgb(212, 19, 103);
+    font-weight: 600;
+    color: rgb(212, 19, 103);
+    padding-left: 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.processHeaderRelease{
+    background-color: rgb(224,224,224);
+    border-left: 5px solid #1794db;
+    border-bottom: 1px solid #1794db;
+    font-weight: 600;
+    color: #1794db;
+    padding-left: 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.contentNews{
+    margin: 10px;
+}
+.newsTitleSprint{
+    border-bottom: 1px solid rgb(212, 19, 103);
+    font-weight: 600;
+    padding-left: 20px;
+    display: flex;
+}
+.newsTitleRelease{
+    border-bottom: 1px solid #1794db;
+    font-weight: 600;
+    padding-left: 20px;
+    display: flex;
+}
+.newsTitleLightning{
+    background-color: #ffebef;
+    border-left: 5px solid #d33552;
+    border-bottom: 2px solid rgb(224,224,224);
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 20px;
+}
+.newsTitlePilot{
+    background-color: #f4ffff;
+    border-left: 5px solid #71c4c7;
+    border-bottom: 2px solid rgb(224,224,224);
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 20px;
+}
+.newsTitleOther{
+    background-color: #c4c4c4;
+    border-left: 5px solid rgb(212, 19, 103);
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 20px;
+}
+.hashtag{
+    color: rgb(212, 19, 103);
+}
+.newsProductsSprint{
+    font-weight: 600;
+}
+.importanatNewsContent{
+    color: #2C2C2C;
+    border: 2px solid #2C2C2C;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 25px;
+    text-align: center;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 10pt;
+}
+.acceptAllNews{
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(107, 106, 106);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.acceptAllNews:hover{
+    background-color: rgb(212, 19, 103);
+    color: #fff;
+    text-decoration: none;
+}
+.dialogButtonModal{
+    /*text-align: end;*/
+}
+.markerNewNotificationList{
+    /*background-color: rgb(212, 19, 103);*/
+    color: #fff;
+    border-radius: 50%;
+    /*border: 2px solid #ffffff;*/
+    font-weight: 600;
+    padding: 5px;
+}
+.notificationItem{
+    display: flex;
+    margin-top: 5px;
+    /*border: 1px solid rgb(212, 19, 103);*/
+    border-radius: 5px;
+    box-shadow: 0px -7px 10px -9px #000000;
+    justify-content: space-between;
+    padding: 5px;
+    cursor: pointer;
+}
+.typeNotyfication{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0px 10px;
+    cursor: pointer;
+    width: 250px;
+    color: #ffffff;
+}
+.notificationItem.sprint{
+    background-color: #CC0066;
+}
+.notificationItem.lightning{
+    background-color: #d33552;
+}
+.notificationItem.pilot{
+    background-color: #71c4c7;
+}
+.notificationItem.release{
+    background-color: #1794db;
+}
+.notificationItem.other{
+    background-color: #818181;
+}
+.notificationItem.sprint:hover{
+    background-color: rgb(143, 53, 98);
+}
+.notificationItem.lightning:hover{
+    background-color: #943d4d;
+}
+.notificationItem.pilot:hover{
+    background-color: #438f92;
+}
+.notificationItem.release:hover{
+    background-color: #386e8d;
+}
+.notificationItem.other:hover{
+    background-color: #5a5a5a;
+}
+.notificationsButton{
+    display: flex;
+    position: fixed; /* Stay in place */
+    z-index: 9; /* Sit on top */
+    right: -430px;
+    top: 250px;
+    width: 510px;
+    padding: 10px;
+    
+    text-align: start;
+}
+.showNotify{
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border-radius: 10px 0 0 10px;
+    background: linear-gradient(176.19deg, #323E48 4.42%, #5B656D 58.81%);
+}
+.showNotify img{
+    width: 60px;
+    height: 60px;
+}
+.contanerListNotificationButton{
+    height: 440px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    padding: 10px;
+}
+.listNotificationInButton{
+    padding: 10px;
+    width: 400px;
+    height: 420px;
+    overflow: auto;
+    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
+    background-color: #fff;
+}
+.slideRight{
+    animation-name: slideRight;
+    animation-duration: 1s; 
+    animation-timing-function: ease-in-out; 
+    visibility: visible !important;
+    right: 0px;
+}
+ 
+@keyframes slideRight {
+    0% {
+        right: -430px;
+    }           
+    100% {
+        right: 0px;
+    }
+}
+.slideLeft{
+    animation-name: slideLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;   
+    visibility: visible !important; 
+    right: -430px;
+}
+ 
+@keyframes slideLeft {
+    0% {
+        right: 0px;
+    }          
+    100% {
+        right: -430px;
+    } 
+    
+}
+
+.importantMarker{
+    font-weight: 600;
+}
+.blinking{
+    background: linear-gradient(176.19deg, #323E48 4.42%, #5B656D 58.81%);
+    animation:blinking 1s linear infinite;
+}
+@keyframes blinking {
+  0% {
+    background: #CC0066;
+  }
+  50% {
+    background: #5B656D;
+  }
+  100% {
+    background: #CC0066;
+  }
+}
+#pulsate_container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin: 12px 0;
+}
+.pulsate::after {
+    /* display: flex; */
+    /* background: #CC0066; */
+    border-radius: 10px;
+    border: 2px solid #CC0066;
+    height: 80px;
+    width: 80px;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+    /* opacity: 0.0; */
+    content: "";
+    z-index: -1;
+    /* margin: auto; */
+    position: absolute;
+    top: 17px;
+}
+@keyframes pulsate {
+  0% {
+    transform: scale(1, 1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1.0;
+  }
+  100% {
+    transform: scale(1.2, 1.2);
+    opacity: 0.0;
+  }
+}
+.processHeaderAnnouncement{
+    font-weight: 600;
+    margin: 10px;
+    text-align: end;
+    text-transform: uppercase;
+}
+.beads {
+list-style: none;
+margin: 0;
+padding-left: 40px;
+border-radius: 5px;
+}
+.beads li {
+text-transform: uppercase;
+font-family: 'Montserrat', sans-serif;
+line-height: 20px;
+border-bottom: 1px solid #D4D7D6;
+position: relative;
+
+}
+.beads a {
+text-decoration: none;
+line-height: 20px;
+position: relative;
+font-size: 10pt;
+
+}
+.beads li:last-child {border-bottom: none;}
+.beads li:before, 
+.beads li:after {
+content:"";
+position: absolute;
+border-radius: 50%;
+}
+.beads li:before {
+top: calc(50% - 5px);
+background: #a3a3a3;
+left: -22px;
+width: 10px;
+height: 10px;
+transition: 0.5s linear;
+}
+
+.beads li:hover:before {background: #CC0066;}
+.releaseList li:hover:before {background: #1794db;}
+</style>
+<script>
+$(document).ready(function(){
+    var REQUEST_URL = '/departments/cc/modalsWin/';
+    var LIST_NEWS_GUID = '980FB2FA-D1E5-4F78-842D-545971A04DBA';
+    var LIST_NOTIFICATIONS_GUID = '3D936394-871E-4B42-A81A-ED624F988547';
+    var LIST_NEWS_READING_STATISTICS_GUID = 'C37E005C-98B6-4A08-A2C0-9C663D25AC92';
+    var METADATA_TYPE_LIST_NEWS_READING_STATISTICS = 'SP.Data.NewsReadingStatisticsListItem';
+    var LIST_USER_SKILLS_GUID = "263E187E-80AB-4246-A371-768E79F60E63";
+    var TIMER_ID;
+    var SPUserProfile = {};
+    var url = '/_api/SP.UserProfiles.PeopleManager/GetMyProperties';
+    getDataNotificationsRequest(url)
+    .then(function(data){
+        var dataUser = data.d.UserProfileProperties.results;
+        for(var i = 0; i < dataUser.length; i++){
+            SPUserProfile[dataUser[i].Key] = dataUser[i].Value;
+        }
+        isKeyManager(SPUserProfile)
+    });
+    function isKeyManager(currentUser){
+        //CanCurrentUserViewMembership - состоит ли текущий пользователь в группе = true/false
+        //OnlyAllowMembersViewMembership - стоит ли галка, что группу могут просматривать только пользователи этой группы = true/false
+        var url = "/_api/web/sitegroups/getbyname('Contact Center - Keymanages')/CanCurrentUserViewMembership";
+        getDataNotificationsRequest(url)
+        .then(function(data){
+            if(data.d.CanCurrentUserViewMembership){
+                SPUserProfile.StatusUser = "Keymanager";
+                getNotificationsList(currentUser);
+            }else{
+                getDataFromResultsNotifications(currentUser);
+            }
+        })
+    }
+    function requestInterval(){
+        if(!TIMER_ID){
+            TIMER_ID = setInterval(function(){isKeyManager(SPUserProfile)}, 300000)
+        }
+    }
+    function getNotificationsList(currentUser){
+        var currentDate = new Date();
+        var startPeriod = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+1, 0, 0, 0, 0);
+        var endPeriod = new Date(startPeriod);
+        endPeriod.setMonth(startPeriod.getMonth()-1);
+        var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NOTIFICATIONS_GUID+"')/items?$filter=dateNotification ge datetime'" + formatDateForNotification(endPeriod, 2) + "' and dateNotification le datetime'" + formatDateForNotification(startPeriod, 2) + "'";
+        var notifications = [];
+        getDataNotificationsRequest(url)
+        .then(function(data){
+            data.d.results.forEach(function(res){
+                notifications.push(res);
+            })
+        })
+        getDataFromResultsNotificationsForKeys(currentUser, notifications);
+    }
+    function getDataFromResultsNotificationsForKeys(currentUser, notifications){
+        notifications.forEach(function(notify){
+            var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_READING_STATISTICS_GUID+"')/items?$filter=userLogin eq '" + currentUser.UserName +"' and idNotification eq "+notify.Id+"&$top=100&$orderby=Created desc";
+            getDataNotificationsRequest(url)
+            .then(function(data){
+                if(data.d.results.length > 0){
+                    data.d.results.forEach(function(resultNotification){
+                        if(resultNotification.resultNotification != "all"){
+                            updateStatusNotification("Новости не прочитаны", resultNotification.Id, undefined, "all");
+                        }
+                    })
+                }else{
+                    var sendData = {
+                        "__metadata": { type: METADATA_TYPE_LIST_NEWS_READING_STATISTICS },
+                        "Title": notify.Title,
+                        "dateNotification": notify.dateNotification,
+                        "idNews": notify.listNews,
+                        "userLogin": currentUser.UserName,
+                        "office": currentUser.Office,
+                        "idNotification": notify.Id.toString(),
+                        "status": "Новости не прочитаны",
+                        "skillsUser": "all"
+                    }
+                    setDataResultsNotification(sendData)
+                }
+            })
+        })
+        getDataFromResultsNotifications(currentUser);
+    }
+    function getDataFromResultsNotifications(currentUser){
+        var currentDate = new Date();
+        var startPeriod = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+1, 0, 0, 0, 0);
+        var endPeriod = new Date(startPeriod.getFullYear(), startPeriod.getMonth()-1, startPeriod.getDate(), 0, 0, 0, 0);
+        var notificationList = [];
+        //var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_READING_STATISTICS_GUID+"')/items?$filter=userLogin eq '" + currentUser.UserName +"'&$top=100&$orderby=Created desc";
+        var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_READING_STATISTICS_GUID+"')/items?$filter=userLogin eq '" + currentUser.UserName +"' and (dateNotification ge datetime'"+formatDateForNotification(endPeriod, 2)+"') and (dateNotification le datetime'"+formatDateForNotification(startPeriod, 2)+"')&$top=100&$orderby=Created desc";
+        getDataNotificationsRequest(url)
+        .then(function(data){
+            if(data.d.results.length > 0){
+                data.d.results.forEach(function(notificationStatus){
+                    notificationList.push(notificationStatus)
+                })
+                changeStatusNewNotifications(notificationList);
+            }else{
+                requestInterval();
+            }
+        });
+    }
+    function changeStatusNewNotifications(notificationList){
+        
+        var isMessageRouting = true;
+        for(var i=0; i<notificationList.length; i++){
+            var notification = notificationList[i];
+            if(notification.status == "Пользователь не авторизовался"){
+                
+                var statusNotification = "Нет актуальных новостей"
+                var newsData = getDataNotification(notification.idNews);
+                if(notification.skillsUser == "all"){
+                    statusNotification = "Новости не прочитаны";
+                }
+                newsData.forEach(function(news){
+                    if(news.typeDestination == "Навыка"){
+                        var destinations = news.destination.split(";");
+                        destinations.forEach(function(destination){
+                            if(destination == notification.skillsUser){
+                                statusNotification = "Новости не прочитаны";
+                            }
+                        })
+                    }
+                    if(news.typeDestination == "Группы"){
+                        var destinations = news.destination.split(";");
+                        destinations.forEach(function(destination){
+                            if(destination == notification.leaderId){
+                                statusNotification = "Новости не прочитаны";
+                            }
+                        })
+                    }
+                    if(news.typeDestination == "Выделенных сотрудников"){
+                        var destinations = news.destination.split(";");
+                        destinations.forEach(function(destination){
+                            if(destination == notification.userLogin){
+                                statusNotification = "Новости не прочитаны";
+                            }
+                        })
+                    }
+                })
+                isMessageRouting = false;
+                updateStatusNotification(statusNotification, notification.Id)
+            }
+        }
+        if(isMessageRouting){
+            messageRouting(notificationList);
+        }else{
+            getDataFromResultsNotifications(SPUserProfile)
+        }
+    }
+    function messageRouting(notificationList){
+        var notificationsNew = [];
+        var notificationsListForDisplay = [];
+        notificationList.forEach(function(notification){
+            if(notification.status == "Новости не прочитаны"){
+                var currentDay = new Date();
+                var dateNotification = new Date(notification.dateNotification)
+                var notificationDisplayPeriod;
+                if(notification.Title == "Спринт"){
+                    notificationDisplayPeriod = 2;
+                }else if(notification.Title == "Молния"){
+                    notificationDisplayPeriod = 1;
+                }else if(notification.Title == "Пилот"){
+                    notificationDisplayPeriod = 1;
+                }else if(notification.Title == "Релиз"){
+                    notificationDisplayPeriod = 2;
+                }else if(notification.Title == "Другое"){
+                    notificationDisplayPeriod = 1;
+                }
+                var endNotificationDisplayperiod = new Date();
+                endNotificationDisplayperiod.setDate(currentDay.getDate() + notificationDisplayPeriod);
+                
+                if(dateNotification <= currentDay && currentDay <= endNotificationDisplayperiod){
+                    notificationsNew.push(notification)
+                }
+               notificationsListForDisplay.push(notification)
+            }
+            if(notification.status == "Новости прочитаны"){
+                notificationsListForDisplay.push(notification)
+            }
+        })
+        if(notificationsListForDisplay.length){
+            showNotificationList(notificationsListForDisplay)
+        }
+        if(notificationsNew.length){
+            //showWindowWithNews(notificationsNew)
+        }
+    }
+    function showNotificationList(notificationsListForDisplay){
+        var notificationsButton = "<div class='notificationsButton'>"+
+                '<div id="pulsate_container"><span class="showNotify"><img src="https://intranet.rencredit.ru/Departments/CC/Documents/default/news_icon.png" /></span></div>'+
+            "</div>"
+        if($('.notificationsButton').length){
+            
+            listNotify(notificationsListForDisplay)
+        }else{
+            $('body').append(notificationsButton);
+        }
+        if($('#pulsate_container').hasClass('pulsate')){
+            $('#pulsate_container').removeClass('pulsate');
+            $('.showNotify').removeClass('blinking');
+            
+        }
+        var isBliking = false;
+        var isRing = false;
+        var currentTime = new Date();
+        notificationsListForDisplay.forEach(function(notification){
+            var dateNotification = new Date(notification.dateNotification);  
+            dateNotification.setHours(dateNotification.getHours());
+            var endPeriodRing = new Date(dateNotification);
+            endPeriodRing.setMinutes(endPeriodRing.getMinutes()+5);
+            if(dateNotification <= currentTime && currentTime <= endPeriodRing){
+                isRing = true;
+            }
+            if(notification.status == "Новости не прочитаны"){
+                isBliking = true;
+            }
+        });
+        if(isRing){
+            if(!SPUserProfile.StatusUser){
+                PlaySound("https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/5216.mp3");
+            }
+        }
+        if(isBliking){
+            $('#pulsate_container').addClass('pulsate');
+            $('.showNotify').addClass('blinking');
+        }
+        if($('.listNotificationInButton').length){
+            $('.listNotificationInButton').empty();
+        }else{
+            $('.notificationsButton').append('<div class="contanerListNotificationButton"><div class="listNotificationInButton"></div></div>');
+        }
+        //$('.notificationsButton').append('<div class="listNotificationInButton"></div>');
+        listNotify(notificationsListForDisplay);
+        $('.showNotify').unbind().click(function(){
+            if($('.notificationsButton').hasClass('slideRight')){
+                $('.notificationsButton').removeClass('slideRight');
+                $('.notificationsButton').addClass('slideLeft');
+            }else{
+                $('.notificationsButton').removeClass('slideLeft');
+                $('.notificationsButton').addClass('slideRight');
+            }
+        })
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        requestInterval();
+        function listNotify(notificationsListForDisplay){
+            if($('.notificationItem').length){
+                $('.notificationItem').remove();
+            }
+            
+            var displayListNotification = "";
+            notificationsListForDisplay.forEach(function(notification){
+                var classNameNotification;
+                if(notification.Title == "Спринт"){
+                    classNameNotification = "sprint";
+                }else if(notification.Title == "Молния"){
+                    classNameNotification = "lightning";
+                }else if(notification.Title == "Пилот"){
+                    classNameNotification = "pilot";
+                }else if(notification.Title == "Релиз"){
+                    classNameNotification = "release";
+                }else if(notification.Title == "Другое"){
+                    classNameNotification = "other";
+                }
+                var markerNew = "<span></span>";
+                if(notification.status == "Новости не прочитаны"){
+                    markerNew = "<span class='markerNewNotificationList'>NEW</span>";
+                }
+                var dateNotification = formatDateForNotification(new Date(notification.dateNotification));
+                var nitificationTitle = "";
+                if(notification.Title == "Другое"){
+                    nitificationTitle = "Другие новости";
+                }else{
+                    nitificationTitle = notification.Title;
+                }
+                displayListNotification = "<div class='notificationItem "+classNameNotification+"' id='"+notification.Id+"'><div class='typeNotyfication' ><span>"+nitificationTitle+"</span><span>"+ dateNotification + "</span></div>"+markerNew+"</div>";
+                $('.listNotificationInButton').append(displayListNotification);
+                $('#'+notification.Id).unbind().click(function(){
+                    var newsData = getDataNotification(notification.idNews);
+                    if(notification.Title == "Спринт"){
+                        showNewsTypeSprint(newsData, notification)
+                    }else if(notification.Title == "Молния"){
+                        showNewsTypeLightning(newsData, notification)
+                    }else if(notification.Title == "Пилот"){
+                        showNewsTypePilot(newsData, notification)
+                    }else if(notification.Title == "Релиз"){
+                        showNewsTypeRelease(newsData, notification)
+                    }else if(notification.Title == "Другое"){
+                        showNewsTypeOther(newsData, notification)
+                    }
+                })
+            })
+        }
+    }
+    function showWindowWithNews(notificationsNew){
+        var currentTime = new Date();
+        notificationsNew.forEach(function(alert){ 
+            var dateNotification = new Date(alert.dateNotification);  
+            dateNotification.setHours(dateNotification.getHours()-3);  
+            if(dateNotification.getHours() == currentTime.getHours()){
+                if(dateNotification.getMinutes() <= currentTime.getMinutes()+5 && dateNotification.getMinutes() >= currentTime.getMinutes()){
+                    var newsData = getDataNotification(alert.idNews);
+                    if(alert.Title == "Спринт"){
+                        showNewsTypeSprint(newsData, alert)
+                        
+                    }
+                    if(alert.Title == "Молния"){
+                        showNewsTypeLightning(newsData, alert)
+                    }
+                    if(alert.Title == "Пилот"){
+                        showNewsTypePilot(newsData, alert)
+                    }
+                    if(alert.Title == "Релиз"){
+                        showNewsTypeRelease(newsData, alert)
+                    }
+                    if(alert.Title == "Другое"){
+                        showNewsTypeOther(newsData, alert)
+                    }
+                }
+            }else if(dateNotification.getMinutes() <= 6 && dateNotification.getMinutes() >= 1){
+                if(alert.Title == "Молния"){
+                    var newsData = getDataNotification(alert.idNews);
+                    showNewsTypeLightning(newsData, alert)
+                }
+            } 
+            
+        })
+    }
+    
+    function setDataResultsNotification(data){
+        var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_READING_STATISTICS_GUID+"')/Items";
+        SetDataNotificationsRequest(url, data).then(function(){});
+    }
+    function updateStatusNotification(statusNotification, Id, dateReading, skills){
+        var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_READING_STATISTICS_GUID+"')/Items("+ Id +")";
+        
+        if(dateReading){
+            var data = {
+                "__metadata": { type: METADATA_TYPE_LIST_NEWS_READING_STATISTICS },
+                "status": statusNotification,
+                "dateReading": dateReading
+            }
+        }else{
+            if(skills){
+                var data = {
+                    "__metadata": { type: METADATA_TYPE_LIST_NEWS_READING_STATISTICS },
+                    "status": statusNotification,
+                    "skillsUser": skills
+                }
+            }else{
+                var data = {
+                    "__metadata": { type: METADATA_TYPE_LIST_NEWS_READING_STATISTICS },
+                    "status": statusNotification
+                }
+            }
+            
+        }
+        UpdateDataNotificationsRequest(url, data)
+        .then(function(){})
+    }
+
+    function getDataNotification(listNewsString){
+        var NewsData = [];
+        var listNewsString = listNewsString.split(";")
+        listNewsString.forEach(function(idNews){
+            var url = REQUEST_URL+"_api/web/lists(guid'"+LIST_NEWS_GUID+"')/items?$filter=Id eq " + idNews;
+            getDataNotificationsRequest(url)
+            .then(function(data){
+                data.d.results.forEach(function(dataNews){
+                    NewsData.push({
+                        title: dataNews.Title,
+                        descriptionNews: dataNews.descriptionNews,
+                        processNews: dataNews.processNews,
+                        productNews: dataNews.productNews,
+                        statusNews: dataNews.statusNews,
+                        typeDestination: dataNews.typeDestination,
+                        priorityNews: dataNews.priorityNews,
+                        destination: dataNews.destination,
+                        typeNews: dataNews.typeNews,
+                        id: dataNews.Id
+                    })
+                })
+                
+            })
+        })
+        return NewsData;
+    }
+    function showNewsTypeSprint(newsData, notification){
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        var listContentNews = "";
+        var newsForCurrentUser = [];
+        newsData.forEach(function(news){
+            if(notification.skillsUser == "all"){
+                newsForCurrentUser.push(news);
+            }else{
+                if(news.typeDestination == "Навыка"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.skillsUser){
+                            newsForCurrentUser.push(news);
+                        }
+                    })
+                }
+                if(news.typeDestination == "Группы"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.leaderId){
+                            newsForCurrentUser.push(news);
+                        }
+                    })
+                }
+                if(news.typeDestination == "Выделенных сотрудников"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.userLogin){
+                            newsForCurrentUser.push(news);
+                            
+                        }
+                    })
+                }
+            }
+            
+        })
+        
+        var allProcessesListNewsArr = [];
+        var serviceListNewsArr = [];
+        var salesListNewsArr = [];
+        var expertsListNewsArr = [];
+
+        var allProcessesListNews = "";
+        var serviceListNews = "";
+        var salesListNews = "";
+        var expertsListNews = "";
+
+        var allProcessesAnnouncement = "";
+        var serviceAnnouncement = "";
+        var salesAnnouncement = "";
+        var expertsAnnouncement = "";
+
+        newsForCurrentUser.forEach(function(news){
+            var processesNews = news.processNews.split(";");
+            processesNews.forEach(function(proc){
+                if(proc){
+                    if(proc == "Сервис"){
+                        serviceListNewsArr.push(getContentNews(news));
+                        if(news.priorityNews == "Да"){
+                            serviceAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            serviceAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Общее"){
+                        allProcessesListNewsArr.push(getContentNews(news));
+                        if(news.priorityNews == "Да"){
+                            allProcessesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            allProcessesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Продажи"){
+                        salesListNewsArr.push(getContentNews(news));
+                        if(news.priorityNews == "Да"){
+                            salesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            salesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Эксперты"){
+                        expertsListNewsArr.push(getContentNews(news));
+                        if(news.priorityNews == "Да"){
+                            expertsAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            expertsAnnouncement += "<li><div class='linkAnnouncement'><a class='announcement' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                }
+            })
+        })
+        if(serviceAnnouncement.length){
+            serviceAnnouncement = "<div class='processHeaderAnnouncement'>Сервис</div><ol class='beads'>"+serviceAnnouncement+"</ol>";
+        }
+        if(allProcessesAnnouncement.length){
+            allProcessesAnnouncement = "<div class='processHeaderAnnouncement'>Общее</div><ol class='beads'>"+allProcessesAnnouncement+"</ol>";
+        }
+        if(salesAnnouncement.length){
+            salesAnnouncement = "<div class='processHeaderAnnouncement'>Продажи</div><ol class='beads'>"+salesAnnouncement+"</ol>";
+        }
+        if(expertsAnnouncement.length){
+            expertsAnnouncement = "<div class='processHeaderAnnouncement'>Эксперты</div><ol class='beads'>"+expertsAnnouncement+"</ol>";
+        }
+        if(serviceListNewsArr.length){
+            serviceListNews = "<div class='serviceListNews'>"+
+                                "<div class='processHeader'>Сервис</div>"+
+                                serviceListNewsArr.join("");
+                              "</div>";
+        }
+        if(allProcessesListNewsArr.length){
+            allProcessesListNews = "<div class='allProcessesListNews'>"+
+                                "<div class='processHeader'>Общее</div>"+
+                                allProcessesListNewsArr.join("");
+                              "</div>";
+        }
+        if(salesListNewsArr.length){
+            salesListNews = "<div class='salesListNews'>"+
+                                "<div class='processHeader'>Продажи</div>"+
+                                salesListNewsArr.join("");
+                              "</div>";
+        }
+        if(expertsListNewsArr.length){
+            expertsListNews = "<div class='expertsListNews'>"+
+                                "<div class='processHeader'>Эксперты</div>"+
+                                expertsListNewsArr.join("");
+                              "</div>";
+        }
+        var acceptButton = "";
+        if(notification.status == "Новости не прочитаны"){
+            acceptButton = '<div class="dialogButtonModal"><a class="acceptAllNews" id="idNotification-'+notification.Id+'" href="#">Прочитал все новости</a></div>';
+        }
+        var modalContent = ' <div id="myModalNotification" class="modalNotification">'+
+                                '<div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                        '<div class="titleTask"></div>'+
+                                        '<span class="closeNotification">×</span>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                        '<div class="newsHeaderSprint">Спринт</div>'+
+                                        '<div class="newsHeaderTime">'+formatDateForNotification(new Date(notification.dateNotification), 3)+'</div>'+
+                                        '<div class="contentNewsWin">'+
+                                            '<div class="announcementList">'+
+                                                '<div class="announcementHeader">Содержание</div>'+
+                                                allProcessesAnnouncement + serviceAnnouncement + expertsAnnouncement + salesAnnouncement +
+                                            '</div>'+
+                                            '<div class="listNewsFull">'+
+                                                allProcessesListNews+
+                                                serviceListNews+
+                                                expertsListNews+
+                                                salesListNews+
+                                                acceptButton+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="modal-footer">'+
+                                    '</div>'+
+                                '</div></div>';
+        $('body').append(modalContent);
+        $('.closeNotification').unbind().click(function(){
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+        $('.acceptAllNews').unbind().click(function(){
+            var idNotification = $(this).attr('id').split("-")[1];
+            updateStatusNotification("Новости прочитаны", idNotification, new Date());
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+    }
+    function getContentNews(news, typeNews){
+        var newsProductsArr = news.productNews.split(";");
+        var newsProducts = "";
+        newsProductsArr.forEach(function(productName){
+            if(productName){
+                newsProducts += "<span class='hashtag'>#</span>"+productName;
+            }
+        })
+        var markerImportant = "";
+        if(news.priorityNews == "Да"){
+            markerImportant = "<div class='importanatNewsContent'>!</div>"
+        }
+        var classTitleNews = "newsTitleSprint";
+        if(typeNews == "Релиз"){
+            classTitleNews = "newsTitleRelease";
+        }
+        var contentNews = "<div class='contentNews' id='idNews-"+news.id+"'>"+
+                                "<div class='"+classTitleNews+"'>"+news.title+" "+ markerImportant+"</div>"+
+                                "<div class='newsProductsSprint'>"+newsProducts+"</div>"+
+                                "<div class='newsContent'>"+news.descriptionNews+"</div>"+
+                                "</div>"
+        return contentNews;
+    }
+    function showNewsTypeLightning(newsData, notification){
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        var contentLightning = "";
+        newsData.forEach(function(news){
+            contentLightning += "<div class='contentNews' id='idNews-"+news.id+"'>"+
+                                "<div class='newsTitleLightning'>"+news.title+"</div>"+
+                                "<div class='newsContent'>"+news.descriptionNews+"</div>"+
+                                "</div>"
+        })
+        var acceptButton = "";
+        if(notification.status == "Новости не прочитаны"){
+            acceptButton = '<div class="dialogButtonModal"><a class="acceptAllNews" id="idNotification-'+notification.Id+'" href="#">Прочитал все новости</a></div>';
+        }
+        var modalContent = ' <div id="myModalNotification" class="modalNotification">'+
+                                '<div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                        '<div class="titleTask"></div>'+
+                                        '<span class="closeNotification">×</span>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                        '<div class="newsHeaderLightning">Молния</div>'+
+                                        '<div class="newsHeaderTime">'+formatDateForNotification(new Date(notification.dateNotification), 3)+'</div>'+
+                                        '<div class="listNewsFullLightning">'+
+                                            contentLightning+
+                                            acceptButton+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="modal-footer">'+
+                                    '</div>'+
+                                '</div></div>';
+        $('body').append(modalContent);
+        $('.closeNotification').unbind().click(function(){
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+        $('.acceptAllNews').unbind().click(function(){
+            var idNotification = $(this).attr('id').split("-")[1];
+            updateStatusNotification("Новости прочитаны", idNotification, new Date());
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+    }
+    function showNewsTypePilot(newsData, notification){
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        var contentPilot = "";
+        newsData.forEach(function(news){
+            contentPilot += "<div class='contentNews' id='idNews-"+news.id+"'>"+
+                                "<div class='newsTitlePilot'>"+news.title+"</div>"+
+                                '<div class="newsHeaderTime">'+formatDateForNotification(new Date(notification.dateNotification), 3)+'</div>'+
+                                "<div class='newsContent'>"+news.descriptionNews+"</div>"+
+                                "</div>"
+        })
+        var acceptButton = "";
+        if(notification.status == "Новости не прочитаны"){
+            acceptButton = '<div class="dialogButtonModal"><a class="acceptAllNews" id="idNotification-'+notification.Id+'" href="#">Прочитал все новости</a></div>';
+        }
+        var modalContent = ' <div id="myModalNotification" class="modalNotification">'+
+                                '<div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                        '<div class="titleTask"></div>'+
+                                        '<span class="closeNotification">×</span>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                        '<div class="listNewsFullPilot">'+
+                                                contentPilot+
+                                                acceptButton+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="modal-footer">'+
+                                    '</div>'+
+                                '</div></div>';
+        $('body').append(modalContent);
+        $('.closeNotification').unbind().click(function(){
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+        $('.acceptAllNews').unbind().click(function(){
+            var idNotification = $(this).attr('id').split("-")[1];
+            updateStatusNotification("Новости прочитаны", idNotification, new Date());
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+    }
+    function showNewsTypeOther(newsData, notification){
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        var contentOther = "";
+        newsData.forEach(function(news){
+            contentOther += "<div class='contentNews' id='idNews-"+news.id+"'>"+
+                                "<div class='newsTitleOther'>"+news.title+"</div>"+
+                                '<div class="newsHeaderTime">'+formatDateForNotification(new Date(notification.dateNotification), 3)+'</div>'+
+                                "<div class='newsContent'>"+news.descriptionNews+"</div>"+
+                                "</div>"
+        })
+        var acceptButton = "";
+        if(notification.status == "Новости не прочитаны"){
+            acceptButton = '<div class="dialogButtonModal"><a class="acceptAllNews" id="idNotification-'+notification.Id+'" href="#">Прочитал все новости</a></div>';
+        }
+        var modalContent = ' <div id="myModalNotification" class="modalNotification">'+
+                                '<div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                        '<div class="titleTask"></div>'+
+                                        '<span class="closeNotification">×</span>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                        '<div class="listNewsFullOther">'+
+                                            contentOther+
+                                            acceptButton+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="modal-footer">'+
+                                    '</div>'+
+                                '</div></div>';
+        $('body').append(modalContent);
+        $('.closeNotification').unbind().click(function(){
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+        $('.acceptAllNews').unbind().click(function(){
+            var idNotification = $(this).attr('id').split("-")[1];
+            updateStatusNotification("Новости прочитаны", idNotification, new Date());
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+    }
+    function showNewsTypeRelease(newsData, notification){
+        clearInterval(TIMER_ID);
+        TIMER_ID = null;
+        var listContentNews = "";
+        var newsForCurrentUser = [];
+        newsData.forEach(function(news){
+            if(notification.skillsUser == "all"){
+                newsForCurrentUser.push(news);
+            }else{
+                if(news.typeDestination == "Навыка"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.skillsUser){
+                            newsForCurrentUser.push(news);
+                        }
+                    })
+                }
+                if(news.typeDestination == "Группы"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.leaderId){
+                            newsForCurrentUser.push(news);
+                        }
+                    })
+                }
+                if(news.typeDestination == "Выделенных сотрудников"){
+                    var destinations = news.destination.split(";");
+                    destinations.forEach(function(destination){
+                        if(destination == notification.userLogin){
+                            newsForCurrentUser.push(news);
+                            
+                        }
+                    })
+                }
+            }
+            
+        })
+        
+        var allProcessesListNewsArr = [];
+        var serviceListNewsArr = [];
+        var salesListNewsArr = [];
+        var expertsListNewsArr = [];
+
+        var allProcessesListNews = "";
+        var serviceListNews = "";
+        var salesListNews = "";
+        var expertsListNews = "";
+
+        var allProcessesAnnouncement = "";
+        var serviceAnnouncement = "";
+        var salesAnnouncement = "";
+        var expertsAnnouncement = "";
+
+        newsForCurrentUser.forEach(function(news){
+            var processesNews = news.processNews.split(";");
+            processesNews.forEach(function(proc){
+                if(proc){
+                    if(proc == "Сервис"){
+                        serviceListNewsArr.push(getContentNews(news, "Релиз"));
+                        if(news.priorityNews == "Да"){
+                            serviceAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            serviceAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Общее"){
+                        allProcessesListNewsArr.push(getContentNews(news, "Релиз"));
+                        if(news.priorityNews == "Да"){
+                            allProcessesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            allProcessesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Продажи"){
+                        salesListNewsArr.push(getContentNews(news, "Релиз"));
+                        if(news.priorityNews == "Да"){
+                            salesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            salesAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                    if(proc == "Эксперты"){
+                        expertsListNewsArr.push(getContentNews(news, "Релиз"));
+                        if(news.priorityNews == "Да"){
+                            expertsAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+" <div class='importanatNewsContent'>!</div></a></div></li>";
+                        }else{
+                            expertsAnnouncement += "<li><div class='linkAnnouncement'><a class='announcementRelease' href='#idNews-"+news.id+"'>"+news.title+"</a></div></li>";
+                        }
+                    }
+                }
+            })
+        })
+        if(serviceAnnouncement.length){
+            serviceAnnouncement = "<div class='processHeaderAnnouncement'>Сервис</div><ol class='beads releaseList'>"+serviceAnnouncement+"</ol>";
+        }
+        if(allProcessesAnnouncement.length){
+            allProcessesAnnouncement = "<div class='processHeaderAnnouncement'>Общее</div><ol class='beads releaseList'>"+allProcessesAnnouncement+"</ol>";
+        }
+        if(salesAnnouncement.length){
+            salesAnnouncement = "<div class='processHeaderAnnouncement'>Продажи</div><ol class='beads releaseList'>"+salesAnnouncement+"</ol>";
+        }
+        if(expertsAnnouncement.length){
+            expertsAnnouncement = "<div class='processHeaderAnnouncement'>Эксперты</div><ol class='beads releaseList'>"+expertsAnnouncement+"</ol>";
+        }
+        if(serviceListNewsArr.length){
+            serviceListNews = "<div class='serviceListNews'>"+
+                                "<div class='processHeaderRelease'>Сервис</div>"+
+                                serviceListNewsArr.join("");
+                              "</div>";
+        }
+        if(allProcessesListNewsArr.length){
+            allProcessesListNews = "<div class='allProcessesListNews'>"+
+                                "<div class='processHeaderRelease'>Общее</div>"+
+                                allProcessesListNewsArr.join("");
+                              "</div>";
+        }
+        if(salesListNewsArr.length){
+            salesListNews = "<div class='salesListNews'>"+
+                                "<div class='processHeaderRelease'>Продажи</div>"+
+                                salesListNewsArr.join("");
+                              "</div>";
+        }
+        if(expertsListNewsArr.length){
+            expertsListNews = "<div class='expertsListNews'>"+
+                                "<div class='processHeaderRelease'>Эксперты</div>"+
+                                expertsListNewsArr.join("");
+                              "</div>";
+        }
+        var acceptButton = "";
+        if(notification.status == "Новости не прочитаны"){
+            acceptButton = '<div class="dialogButtonModal"><a class="acceptAllNews" id="idNotification-'+notification.Id+'" href="#">Прочитал все новости</a></div>';
+        }
+        
+        var modalContent = ' <div id="myModalNotification" class="modalNotification">'+
+                                '<div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                        '<div class="titleTask"></div>'+
+                                        '<span class="closeNotification">×</span>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                        '<div class="newsHeaderRelease">Релиз</div>'+
+                                        '<div class="newsHeaderTime">'+formatDateForNotification(new Date(notification.dateNotification), 3)+'</div>'+
+                                        '<div class="contentNewsWin">'+
+                                        '<div class="announcementListRelease">'+
+                                            '<div class="announcementHeader">Анонс новостей</div>'+
+                                            allProcessesAnnouncement + serviceAnnouncement + expertsAnnouncement + salesAnnouncement +'</div>'+
+                                        '<div class="listNewsFullRelease">'+
+                                            allProcessesListNews+
+                                            serviceListNews+
+                                            expertsListNews+
+                                            salesListNews+
+                                            acceptButton+
+                                        '</div></div>'+
+                                    '</div>'+
+                                    '<div class="modal-footer">'+
+                                    '</div>'+
+                                '</div></div>';
+        $('body').append(modalContent);
+        $('.closeNotification').unbind().click(function(){
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+        $('.acceptAllNews').unbind().click(function(){
+            var idNotification = $(this).attr('id').split("-")[1];
+            updateStatusNotification("Новости прочитаны", idNotification, new Date());
+            $('#myModalNotification').remove();
+            getDataFromResultsNotifications(SPUserProfile);
+        })
+    }
+    function formatDateForNotification(date, type){
+        
+        var d = new Date(date);
+        
+        if(type == 1){
+            d.setDate(d.getDate() - 1);
+            var dd = d.getDate(); 
+            var mm = d.getMonth() + 1; 
+            var yyyy = d.getFullYear(); 
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            }
+    
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            }
+            var dateFormat = yyyy + "-" + mm + "-" + dd+"T21:00:00Z";
+        }else if(type == 2){
+            var dd = d.getDate(); 
+            var mm = d.getMonth() + 1; 
+            var yyyy = d.getFullYear(); 
+            var hh = d.getHours() < 3 ? 0 : d.getHours() -3;
+            var min = d.getMinutes();
+
+            hh = hh < 10 ? '0'+hh : hh;
+            min = min < 10 ? '0'+min : min;
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            }
+
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            }
+            var dateFormat = yyyy + "-" + mm + "-" + dd+"T"+hh+":"+min+":00Z";
+        }else if(type == 3){
+            var dd = d.getDate(); 
+            var mm = d.getMonth() + 1; 
+            var yyyy = d.getFullYear(); 
+            var hh = d.getHours() < 3 ? 0 : d.getHours();
+            var min = d.getMinutes();
+
+            hh = hh < 10 ? '0'+hh : hh;
+            min = min < 10 ? '0'+min : min;
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            }
+
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            }
+            var dateFormat = dd + "." + mm + "." + yyyy +" "+hh+":"+min;
+        }else{
+            var dd = d.getDate(); 
+            var mm = d.getMonth() + 1; 
+            var yyyy = d.getFullYear(); 
+            var hh = d.getHours();
+            var min = d.getMinutes();
+
+            if (dd < 10) { 
+                dd = '0' + dd; 
+            }
+
+            if (mm < 10) { 
+                mm = '0' + mm; 
+            }
+            var dateFormat = dd + "." + mm;
+        }
+        
+        return dateFormat;
+    }
+    function PlaySound(path) {
+        var audio = new Audio(path);
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(function(){
+                audio.play();
+            })
+            .catch(function(error) {
+            // Auto-play was prevented
+            // Show paused UI.
+            });
+        }
+    }
+    function getDataNotificationsRequest(url){
+        UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, _spFormDigestRefreshInterval);
+        return $.ajax({
+            async: false,
+            type: 'GET',
+            headers: {
+                accept: "application/json;odata=verbose"
+            },
+            url: url
+        });
+    }
+    function UpdateDataNotificationsRequest(url, data) { //обновление данных
+        UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, _spFormDigestRefreshInterval);
+        return $.ajax({
+            url: url,
+            type: "POST",
+            async : false,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "content-Type": "application/json;odata=verbose",
+                "X-Http-Method": "MERGE",
+                "If-Match": "*"
+            },
+            data: JSON.stringify(data)
+        });
+    }
+    function SetDataNotificationsRequest(url, data){
+        UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, _spFormDigestRefreshInterval);
+        return $.ajax({
+            type: "POST",
+            contentType: "application/json;odata=verbose",
+            data: JSON.stringify(data),
+            async : false,
+            headers: {
+                Accept: "application/json;odata=verbose",
+                "X-RequestDigest": $("#__REQUESTDIGEST").val()
+            },
+            url: url
+        });
+    }
+})
+</script>

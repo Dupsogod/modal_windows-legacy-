@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<!--<link rel="stylesheet" type="text/css" href="https://intranet.rencredit.ru/Departments/CC/testPortal/Documents/ModalWindows/style.css">
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/testPortal/Documents/ModalWindows/index.js"></script>-->
+<link rel="stylesheet" type="text/css" href="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/ModalWindows/style.css">
+<script type="text/javascript" src="https://intranet.rencredit.ru/Departments/CC/modalsWin/Documents/ModalWindows/index.js"></script>
+</head>
+<body><div id="MainFrame"></div></body>
+</html>

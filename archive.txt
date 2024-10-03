@@ -1,0 +1,4 @@
+<link rel="stylesheet" href="/Departments/CC/Documents/modals/archive.css?v=1.2"/> 
+<div class="listNoty">
+</div>
+<script src="/Departments/CC/Documents/modals/archive.js?v=1.6"></script>​​​​​​​
